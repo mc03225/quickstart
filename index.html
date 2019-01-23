@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <h1 id="bigOne"></h1>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAil82iMjsGbhVuC1wE5_igYbuA7KpOqtM",
+        authDomain: "web-quickstart-a32fa.firebaseapp.com",
+        databaseURL: "https://web-quickstart-a32fa.firebaseio.com",
+        projectId: "web-quickstart-a32fa",
+        storageBucket: "web-quickstart-a32fa.appspot.com",
+        messagingSenderId: "1059094052146"
+      };
+      firebase.initializeApp(config);
+
+      var bigOne = document.getElementById("bigOne");
+      var dbRef = firebase
+        .database()
+        .ref()
+        .child("text");
+      dbRef.on("value", snap => (bigOne.innerText = snap.val()));
+    </script>
+  </body>
+</html>
